@@ -1,0 +1,33 @@
+# Currency Converter
+
+# Exchange rates (1 USD = ?)
+exchange_rates = {
+    'USD': 1,
+    'EUR': 0.88,
+    'GBP': 0.76,
+    'INR': 83.57,
+    'AUD': 1.48,
+    # Add more currencies as needed
+}
+
+def convert_currency(amount, from_currency, to_currency):
+    if from_currency != 'USD':
+        amount = amount / exchange_rates[from_currency]
+    
+    result = amount * exchange_rates[to_currency]
+    return result
+
+def main():
+    print("Currency Converter")
+    amount = float(input("Enter the amount: "))
+    from_currency = input("From currency (e.g. USD, EUR, GBP, INR, AUD): ").upper()
+    to_currency = input("To currency (e.g. USD, EUR, GBP, INR, AUD): ").upper()
+
+    if from_currency in exchange_rates and to_currency in exchange_rates:
+        result = convert_currency(amount, from_currency, to_currency)
+        print(f"{amount} {from_currency} = {result} {to_currency}")
+    else:
+        print("Invalid currency. Please try again.")
+
+if __name__ == "__main__":
+    main()
